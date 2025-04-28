@@ -1,45 +1,208 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
-    background-color: #caf7f7;
+    background: linear-gradient(145deg, #243B55, #141E30);
+    color: #fff;
+    margin: 0;
+    padding-top: 20px;
+    /* overflow: hidden;  Removed to enable scrolling */
+    overflow-y: auto; /* Added for vertical scrolling if needed */
+    min-height: 100vh; /* Ensure body is at least the height of the viewport */
+    position: relative; /* Needed for absolute positioning of elements inside */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#getWordBtn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2em;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+#getWordBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 #wordContainer {
     margin: 20px;
-    font-size: 30px;
-    letter-spacing: 10px;
+    font-size: 2.2em;
+    letter-spacing: 0.2em;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex; /* Added for displaying letters horizontally */
+    justify-content: center; /* Centers the letters */
+    gap: 0.5em; /* Add some gap between letters */
 }
+
+#wordContainer span {
+    /* Styles for the individual letters/blanks */
+    min-width: 1.5em; /* Ensure each letter space has enough width */
+    text-align: center;  /* Center each letter in its space */
+}
+
 
 #alphabetContainer {
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-button {
-    padding: 10px 20px;
+#alphabetContainer button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.1em;
     margin: 5px;
-    font-size: 18px;
     cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.2s ease;
 }
-button  hover {
-    color:aquamarine;
+
+#alphabetContainer button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+#alphabetContainer button:disabled {
+    opacity: 0.6;
+    cursor: default;
+    background: rgba(128, 128, 128, 0.1);
+    border-color: rgba(128, 128, 128, 0.2);
+    color: #ccc;
+    box-shadow: none;
 }
 
 canvas {
-    border: 4px solid black;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: block; /* Important for centering the canvas */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 95%; /* Ensure canvas doesn't overflow on small screens */
+    height: auto; /* Maintain aspect ratio */
 }
 
 #popup {
     position: fixed;
-    top: 30%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -30%);
-    background-color: rgb(211, 183, 225);
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 30px;
-    border: 2px solid black;
-    display: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+    z-index: 10; /* Ensure popup is above other elements */
+}
+
+#popup h2 {
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#popup button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2em;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+#popup button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .hidden {
     display: none;
+}
+
+/* Animated Background */
+@keyframes bg-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body {
+    background: linear-gradient(-45deg, #23a6d5, #23d5ab, #ee7752, #e73c7e, #237cd5);
+    background-size: 700% 700%;
+    animation: bg-animation 15s ease infinite;
+}
+
+/* Hangman Styling */
+.hangman-line {
+    stroke: #fff;
+    stroke-width: 3;
+}
+
+.hangman-circle {
+    stroke: #fff;
+    fill: transparent;
+    stroke-width: 3;
 }
