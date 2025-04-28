@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #caf7f7;
+}
+
+#wordContainer {
+    margin: 20px;
+    font-size: 30px;
+    letter-spacing: 10px;
+}
+
+#alphabetContainer {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+button  hover {
+    color:aquamarine;
+}
+
+canvas {
+    border: 4px solid black;
+    margin-top: 20px;
+}
+
+#popup {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background-color: rgb(211, 183, 225);
+    padding: 30px;
+    border: 2px solid black;
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
